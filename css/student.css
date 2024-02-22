@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--thirdColor);
+}
+
+:root {
+    --mainColor: rgba(22, 34, 57, 0.95);
+    --seconedColor: #f5a425;
+    --thirdColor: #0c1228;
+}
+
+.row {
+    height: 100vh;
+    width: 100%;
+}
+
+/* Start styling the first page  */
+.mainLine {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/* Neon Element */
+h1 {
+    font-size: 45px;
+    position: relative;
+    color: transparent;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--seconedColor), #ffbc00);
+    -webkit-background-clip: text;
+    /* background in text only */
+    animation: neonGlow 2s linear 1;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+h1::after {
+    position: absolute;
+    top: 2px;
+    left: -2px;
+    color: #fff;
+}
+
+/* End Neon Element  */
+
+/* Styliing cards  */
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    counter-reset: doctor;
+}
+
+.card {
+    width: 15%;
+    height: 300px;
+    margin: 3%;
+    border-radius: 16px;
+    position: relative;
+    padding: 0;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+.card::before {
+    counter-increment: doctor;
+    font-weight: 600;
+    content: "doctor "
+        counter(doctor);
+    position: absolute;
+    color: #f5a425;
+    top: -10%;
+    left: 35%;
+    text-transform: uppercase;
+
+}
+
+.card:hover::before {
+    animation: overMe 1s linear infinite;
+    transform: rotateY(180deg);
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.cardChild {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+    /* background-color: red; */
+    color: var(--seconedColor);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    border: 1px solid var(--seconedColor);
+}
+
+#nameMajor {
+    color: white;
+    padding-top: 5px;
+}
+
+#infoDoctor {
+    color: white;
+    padding: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+/* End Styling Cards */
+
+/* Neon Animation  */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px var(--seconedColor), 0 0 35px var(--seconedColor), 0 0 40px var(--seconedColor), 0 0 50px var(--seconedColor), 0 0 55px var(--seconedColor);
+    }
+
+    50% {
+        text-shadow: none;
+    }
+
+    100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px var(--seconedColor), 0 0 30px var(--seconedColor), 0 0 35px var(--seconedColor), 0 0 40px var(--seconedColor), 0 0 50px var(--seconedColor);
+    }
+
+}
+
+/* End Neon Animation  */
+
+/* Text Before Animation  */
+@keyframes overMe {
+    0% {
+        color: var(--mainColor);
+        transition: all 0.3s ease;
+    }
+
+    100% {
+        color: var(--seconedColor);
+        transition: all 0.3s ease;
+    }
+}

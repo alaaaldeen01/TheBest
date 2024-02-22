@@ -1,0 +1,243 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--thirdColor);
+}
+
+:root {
+    --mainColor: rgba(22, 34, 57, 0.95);
+    --seconedColor: #f5a425;
+    --thirdColor: #0c1228;
+}
+
+.row {
+    height: 100vh;
+    width: 100%;
+}
+
+/* Styling h1  */
+.mainLine {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* End Styling h1  */
+
+/* Neon Element */
+h1 {
+    font-size: 45px;
+    position: relative;
+    color: transparent;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--seconedColor), #ffbc00);
+    -webkit-background-clip: text;
+    /* background in text only */
+    animation: neonGlow 2s linear infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+h1::after {
+    position: absolute;
+    top: 2px;
+    left: -2px;
+    color: #fff;
+}
+
+/* End Neon Element  */
+
+/* Styliing cards  */
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    counter-reset: project;
+}
+
+.card {
+    width: 20%;
+    height: 500px;
+    margin: 3%;
+    border-radius: 16px;
+    position: relative;
+    padding: 0;
+    transition: 1s;
+    border: 1px solid var(--mainColor);
+}
+
+
+.card::before {
+    counter-increment: project;
+    font-weight: 600;
+    content: "project "
+        counter(project);
+    position: absolute;
+    color: #f5a425;
+    top: -10%;
+    left: 35%;
+    text-transform: uppercase;
+
+}
+
+.card:hover::before {
+    animation: overMe 1s linear infinite;
+}
+
+.cardChild {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background-color: white;
+}
+
+.cardChild::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 3.7px);
+    height: calc(100% + 3.4px);
+    border: 2px solid var(--mainColor);
+    border-radius: 16px;
+}
+
+.cardChild:hover::before {
+    animation: rotateBorder 3s linear infinite;
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    border-radius: 16px;
+}
+
+.content {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    margin: 0;
+    border-radius: 16px;
+}
+
+.text {
+    background-color: white;
+    height: 200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 16px;
+}
+
+#nameProject {
+    background-color: white;
+    padding: 12px;
+}
+
+#aboutProject {
+    background-color: white;
+    padding: 0 10px 0 10px;
+}
+
+#members {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: white;
+    padding-bottom: 5px;
+    border-radius: 16px;
+}
+
+#members img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 5%;
+}
+
+/* End Styling Cards */
+
+
+/* Styling A Moving Border  */
+
+
+
+/* End Styling A Moving Border  */
+
+
+/* Neon Animation  */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px var(--seconedColor), 0 0 35px var(--seconedColor), 0 0 40px var(--seconedColor), 0 0 50px var(--seconedColor), 0 0 55px var(--seconedColor);
+    }
+
+    50% {
+        text-shadow: none;
+    }
+
+    100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px var(--seconedColor), 0 0 30px var(--seconedColor), 0 0 35px var(--seconedColor), 0 0 40px var(--seconedColor), 0 0 50px var(--seconedColor);
+    }
+
+}
+
+/* End Neon Animation  */
+
+/* Animation Before Element   */
+
+@keyframes overMe {
+    0% {
+        color: var(--mainColor);
+        transition: all 0.3s ease;
+    }
+
+    100% {
+        color: var(--seconedColor);
+        transition: all 0.3s ease;
+    }
+}
+
+/* End Animation Element  */
+
+
+@keyframes rotateBorder {
+    0% {
+        border-color: var(--seconedColor);
+        border-width: 2px;
+        transition: .6s;
+    }
+
+    25% {
+        border-color: var(--seconedColor) var(--mainColor) var(--mainColor) var(--mainColor);
+        border-width: 2px 0 0 0;
+        transition: .5s;
+    }
+
+    50% {
+        border-color: var(--mainColor) var(--seconedColor) var(--mainColor) var(--mainColor);
+        border-width: 0 2px 0 0;
+        transition: .4s;
+    }
+
+    75% {
+        border-color: var(--mainColor) var(--mainColor) var(--seconedColor) var(--mainColor);
+        border-width: 0 0 2px 0;
+        transition: .3s;
+    }
+
+    100% {
+        border-color: var(--mainColor) var(--mainColor) var(--mainColor) var(--seconedColor);
+        border-width: 0 0 0 2px;
+        transition: .2s;
+    }
+}
